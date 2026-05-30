@@ -1,0 +1,792 @@
+You are an academic paper writer for mathematics. Generate a complete AMS-style
+paper based on the mathematical results provided.
+
+════════════════════════════════════════════════════════════════════════════════
+                         IMPORTANT: BEFORE YOU START
+════════════════════════════════════════════════════════════════════════════════
+
+Before writing any content, you MUST complete these steps:
+
+1. READ THE SKILL: Review the paper-writer skill at .codex/skills/paper-writer/SKILL.md
+2. READ THE STYLE GUIDE: Study templates/paper_writing/lab_style_guide.md carefully
+3. REVIEW AMS SAMPLE: Skim paper_draft/example_paper.tex for LaTeX formatting
+   conventions ONLY — it is the official AMS journal sample file that demonstrates
+   how to use amsart theorem environments, equation formatting, list types,
+   bibliography style, and document structure. It is NOT a real paper and its
+   "content" is purely illustrative (placeholder lemmas, dummy proofs, etc.).
+   Do NOT imitate its content or narrative structure.
+4. REVIEW LANGUAGE STYLE: Browse paper_examples/ for language and exposition patterns
+5. VERIFY COMMAND TEMPLATES: Command templates (math.tex, general.tex, macros.tex)
+   are pre-copied to paper_draft/commands/
+
+CRITICAL: The AMS sample file is a LaTeX formatting reference, not a content template.
+Use it to learn \documentclass{amsart} conventions (theorem/proof environments,
+\bibliographystyle{amsplain}, author/address blocks). Write your own content
+based on the research report below.
+
+════════════════════════════════════════════════════════════════════════════════
+                            RESEARCH REPORT
+════════════════════════════════════════════════════════════════════════════════
+
+# Equational Proofs of Jacobson's Theorem for \(k=3\)
+
+## 1. Executive Summary
+
+The research question was whether Brandenburg's equational approach to Jacobson's commutativity theorem can be extended from \(k=1,2\) to rings of characteristic \(p\) satisfying \(x^{p^3}=x\).
+
+The main result of this session is a proof schema for the remaining case \(p\equiv 1\pmod 3\). Brandenburg's period criterion already proves the other congruence classes. For \(p\equiv 1\pmod 3\), the new ingredient is a cyclic norm argument: a Frobenius-skew unit \(b\) with \(ba=a^p b\) or \(ba=a^{p^2}b\) can be normalized to an element \(c\) with \(c^3=1\); because \(T^3-1\) splits over \(\mathbb F_p\), reducedness forces \(c\) to be central, which collapses the Frobenius action.
+
+The result is not an expanded line-by-line equational derivation for every prime. Instead, it identifies finite polynomial certificates which can be computed for each fixed \(p\), matching Brandenburg's style of finite equational proof generation.
+
+## 2. Research Question
+
+Let \(p\) be prime and let \(A\) be a characteristic-\(p\) ring satisfying
+\[
+x^{p^3}=x
+\]
+for all \(x\in A\). Can one construct an equational proof that \(A\) is commutative?
+
+By Brandenburg's reduction, it suffices to prove the monomial constructive Wedderburn statements
+\[
+W_{p,3,T^p},\qquad W_{p,3,T^{p^2}}.
+\]
+
+## 3. Definitions and Notation
+
+A \(p^3\)-ring is a ring satisfying \(px=0\) and \(x^{p^3}=x\) for every element \(x\). Such a ring is reduced, because \(x^2=0\) implies \(x=x^{p^3}=0\).
+
+For \(f\in\mathbb F_p[T]\), \(W_{p,3,f}\) is the statement:
+
+> If \(A\) is a \(p^3\)-ring and \(ba=f(a)b\), then \(ba=ab\).
+
+The polynomial \(T^{p^3}-T\) is the product of all monic irreducible polynomials over \(\mathbb F_p\) of degree \(1\) or \(3\). Thus each element \(a\) decomposes equationally into linear and irreducible-cubic components via the standard central idempotents attached to this factorization.
+
+## 4. Statement of Results
+
+**Lemma 1 (split-polynomial centrality).** Let \(A\) be reduced. If \(c\in A\) satisfies a separable polynomial split over \(\mathbb F_p\), then \(c\) is central. In particular, when \(p\equiv 1\pmod 3\), any \(c\) with \(c^3=1\) is central.
+
+**Lemma 2 (finite norm section).** Let \(p\equiv 1\pmod 3\), let \(g\in\mathbb F_p[T]\) be irreducible cubic, and let \(i\in\{1,2\}\). In
+\[
+B=\mathbb F_p[S,T]/(S^{p^3-1}-1,\ g(T)),
+\]
+with \(\sigma_i(S)=S\), \(\sigma_i(T)=T^{p^i}\), there is a unit \(U\) such that
+\[
+U\sigma_i(U)\sigma_i^2(U)=S.
+\]
+
+**Proposition 3.** If \(p\equiv 1\pmod 3\), then \(W_{p,3,T^p}\) and \(W_{p,3,T^{p^2}}\) have finite equational certificates.
+
+**Theorem 4.** For every prime \(p\), characteristic-\(p\) rings satisfying \(x^{p^3}=x\) are commutative, with an equational proof for each fixed \(p\).
+
+## 5. Proofs
+
+### Proof of Lemma 1
+
+Let \(m(T)=\prod_{\lambda\in\Lambda}(T-\lambda)\) with distinct \(\lambda\in\mathbb F_p\), and suppose \(m(c)=0\). Lagrange interpolation gives polynomials \(e_\lambda(T)\) with \(e_\lambda(\mu)=\delta_{\lambda,\mu}\). Modulo \(m(T)\), the \(e_\lambda\) are pairwise orthogonal idempotents and \(T=\sum_\lambda \lambda e_\lambda\). Evaluating at \(c\), the \(e_\lambda(c)\) are idempotents. Idempotents are central in reduced rings, hence \(c=\sum_\lambda \lambda e_\lambda(c)\) is central.
+
+### Proof of Lemma 2
+
+Let \(q=p^3\) and \(C=\mathbb F_p[S]/(S^{q-1}-1)\). Since the roots of \(S^{q-1}-1\) are \(\mathbb F_q^\times\), every simple factor of \(C\) has degree \(1\) or \(3\) over \(\mathbb F_p\).
+
+Over a degree-1 factor, \(B\) becomes \(\mathbb F_q\), and the norm \(\mathbb F_q^\times\to\mathbb F_p^\times\) is surjective. Over a degree-3 factor, \(g\) splits and \(B\cong\mathbb F_q^3\); \(\sigma_i\) cyclically permutes the three factors, so \((x_0,x_1,x_2)\mapsto x_0x_1x_2\) is surjective onto \(\mathbb F_q^\times\). Thus \(S\) has a norm preimage on every simple factor. The Chinese remainder theorem combines these preimages into \(U\in B\).
+
+For fixed \(p\) and \(g\), choosing a polynomial representative of \(U\) and verifying the displayed norm identity is a finite polynomial calculation, hence an equational certificate.
+
+### Proof of Proposition 3
+
+It is enough to treat \(W_{p,3,T^{p^i}}\) for \(i=1,2\). Suppose \(A\) is a \(p^3\)-ring and
+\[
+ba=a^{p^i}b.
+\]
+
+By Brandenburg's unit-support reduction, we may work on the central support where \(b\) is a unit. Decompose \(a\) using the central idempotents attached to the irreducible factors of \(T^{p^3}-T\). Frobenius preserves each such idempotent, so the relation respects the decomposition. Linear components are immediate because \(a^{p^i}=a\).
+
+Now work on a component where \(g(a)=0\) for an irreducible cubic \(g\). The element \(a^{p^i}-a\) is a unit there, since \(g\) is coprime to \(T^{p^i}-T\). Let \(\sigma(a)=a^{p^i}\). Then
+\[
+b^3a=a^{p^{3i}}b^3=ab^3,
+\]
+so \(s=b^3\) commutes with both \(a\) and \(b\). By Lemma 2, choose \(u\) in the commutative subring generated by \(a\) and \(s\) such that
+\[
+u\sigma(u)\sigma^2(u)=s.
+\]
+Since \(bu=\sigma(u)b\), the element \(c=u^{-1}b\) satisfies
+\[
+c^3=u^{-1}\sigma(u)^{-1}\sigma^2(u)^{-1}b^3=1.
+\]
+Because \(p\equiv 1\pmod 3\), Lemma 1 makes \(c\) central. But
+\[
+ca=u^{-1}ba=u^{-1}a^{p^i}b=a^{p^i}c.
+\]
+As \(c\) is a central unit, \(a=a^{p^i}\), contradicting the fact that \(a^{p^i}-a\) is a unit on a nonzero cubic component. Thus the unit support of \(b\) on every cubic component is zero. Therefore \(ba=ab\) everywhere.
+
+### Proof of Theorem 4
+
+If \(p=2\), \(p=3\), or \(p\equiv 2\pmod 3\), then
+\[
+\gcd(3,p^3-1)=1,
+\]
+so Brandenburg's period criterion proves the \(p^3\)-case. If \(p\equiv 1\pmod 3\), Proposition 3 proves the two monomial Wedderburn statements, and Brandenburg's monomial sufficiency theorem gives commutativity.
+
+## 6. Computational Verification
+
+Environment:
+
+- Python: 3.12.8
+- SymPy: 1.14.0
+- pypdf: 6.12.2
+- Hardware: four NVIDIA RTX A6000 GPUs detected, not needed for the symbolic checks
+
+Scripts:
+
+- `code/finite_field_reductions.py`: pre-gathered helper reproducing Brandenburg's gcd criterion.
+- `src/k3_wedderburn_checks.py`: new exact checks for this session.
+
+Key output saved in `results/k3_checks.json`:
+
+| Check | Result |
+|---|---|
+| \(p=2,3,5,11,17\) sample | \(\gcd(3,p^3-1)=1\), period criterion applies |
+| \(p=7,13,19\) sample | \(\gcd(3,p^3-1)=3\), bad congruence class |
+| \(p=7\) norm summary | \(112\) irreducible cubic factors; norm sections reduce to degree \(1\) and \(3\) components |
+| \(p=13\) norm summary | \(728\) irreducible cubic factors; same component structure |
+| \(p=7\) skew model | In \(T^3+T^2+1\), the common \(S\)-gcd degree drops from \(13\) to \(0\) after adding \(t=3\), indicating no unit skew parameter survives the tested potency equations |
+
+Validation commands run successfully:
+
+```bash
+source .venv/bin/activate
+python -m py_compile src/k3_wedderburn_checks.py code/finite_field_reductions.py
+diff <(python src/k3_wedderburn_checks.py --json) <(python src/k3_wedderburn_checks.py --json)
+```
+
+## 7. Discussion
+
+The proof isolates why \(k=3\), \(p\equiv 1\pmod 3\), is different from the period-criterion cases. The obstruction is a genuine Frobenius 3-cycle. The new observation is that this cycle can be absorbed by a cyclic norm preimage of \(b^3\); after normalization, the skewing element has cube \(1\). Since \(\mathbb F_p\) contains the cube roots of unity in exactly this congruence class, reducedness makes the normalized element central and kills the cycle.
+
+The argument is equational in the same finite-certificate sense used by Brandenburg: for each fixed \(p\), all finite choices reduce to explicit polynomial identities in finite quotient rings.
+
+## 8. Limitations
+
+The report does not print the concrete norm-section polynomial \(U_{g,i}(S,T)\) for every irreducible cubic \(g\) and prime \(p\equiv 1\pmod 3\). Lemma 2 proves such a polynomial exists and is computable by finite algebra/CRT, but a production-grade certificate generator would be needed to emit fully expanded equational derivations.
+
+The computational skew check was performed only for the first open prime \(p=7\) and one irreducible cubic representative. It supports the proof strategy but is not the main proof.
+
+## 9. Open Questions
+
+1. Build a certificate generator that computes \(U_{g,i}(S,T)\) for each irreducible cubic \(g\) and emits a machine-checkable equational derivation.
+2. Minimize the resulting certificates using equivalences between irreducible cubics under linear substitution and reciprocals.
+3. Investigate whether the cyclic norm idea extends to higher bad prime-power layers \(k>3\).
+
+## 10. Conclusions
+
+The \(k=3\) case can be completed by combining Brandenburg's period criterion with a cyclic norm argument for primes \(p\equiv 1\pmod 3\). The proof reduces the missing monomial Wedderburn statements to finite norm-section certificates and a simple centrality argument for elements satisfying \(c^3=1\).
+
+This gives a credible path from the semantic Jacobson theorem to explicit equational proofs for every fixed \(p^3\)-identity.
+
+## References
+
+- Martin Brandenburg, "Equational proofs of Jacobson's theorem", arXiv:2310.05301, 2023.
+- Michael K. Kinyon and Des MacHale, "Elementary Proofs of Ring Commutativity Theorems", arXiv:2601.12599, 2026.
+- Jiang Luh, "On the commutativity of J-rings", 1967.
+- J. M. Dolan, "A proof of Jacobson's theorem", 1976.
+- I. N. Herstein, "Wedderburn's Theorem and a Theorem of Jacobson", 1961.
+
+
+════════════════════════════════════════════════════════════════════════════════
+                            RESEARCH PLAN
+════════════════════════════════════════════════════════════════════════════════
+
+# Research Plan: Equational Jacobson Proofs for \(k=3\)
+
+## Motivation & Novelty Assessment
+
+### Why This Research Matters
+Jacobson's theorem is semantically classical, but fixed-exponent equational proofs expose how much of the theorem is visible inside pure equational logic. The case \(x^{p^3}=x\), \(p=0\), is the first prime-power layer not handled by Brandenburg's explicit \(k=1\) and \(k=2\) arguments.
+
+### Gap in Existing Work
+Brandenburg proves all \(p^3\)-cases for which \(\gcd(3,p^3-1)=1\), namely \(p=2\), \(p=3\), and primes \(p \equiv 2 \pmod 3\). The unresolved family is \(p \equiv 1 \pmod 3\), where the period argument only yields a 3-cycle under Frobenius and does not prove the required constructive Wedderburn statements.
+
+### Our Novel Contribution
+The session will try to extend Brandenburg's constructive Wedderburn method to \(k=3\) by isolating new identities in the remaining Frobenius 3-cycle case. If a complete proof is not found, the deliverable will identify the precise algebraic obstruction and provide reproducible finite-field/skew-algebra computations to guide subsequent proof search.
+
+### Experiment Justification
+- Experiment 1: Verify the congruence split for \(k=3\) and reproduce Brandenburg's coverage. This prevents spending effort on cases already solved by the period criterion.
+- Experiment 2: Analyze \(W_{p,3,T^p}\) and \(W_{p,3,T^{p^2}}\) in the first open case \(p=7\). This is the smallest representative of the unresolved congruence class.
+- Experiment 3: Compute identities in the skew relation \(YX=X^pY\) under \(X^{p^3}=X\), \(Y^{p^3}=Y\), and \((X+Y)^{p^3}=X+Y\). This tests whether ordinary \(p^3\)-potency of linear combinations visibly kills the Frobenius-twisted component.
+- Experiment 4: Search for reusable polynomial identities over \(\mathbb{F}_p\) that hold uniformly for primes \(p \equiv 1 \pmod 3\). This is the route to a human-readable equational proof.
+
+## Research Question
+Can one construct an explicit equational proof that every characteristic-\(p\) ring satisfying \(x^{p^3}=x\) is commutative, with particular focus on the missing primes \(p \equiv 1 \pmod 3\)?
+
+## Background and Motivation
+For fixed \(n\), Birkhoff completeness guarantees an equational proof of commutativity from \(x^n=x\), but this proof is nonconstructive. Brandenburg's paper makes the problem concrete by reducing fixed exponents to prime-power cases and proving \(k=1\), \(k=2\), plus a broad period-criterion family. The first genuinely unresolved prime-power layer is \(k=3\) with \(p \equiv 1 \pmod 3\).
+
+## Hypothesis Decomposition
+1. The \(k=3\) theorem is already proved equationally when \(\gcd(3,p^3-1)=1\).
+2. For \(p \equiv 1 \pmod 3\), it suffices by Brandenburg's monomial theorem to prove \(W_{p,3,T^p}\) and \(W_{p,3,T^{p^2}}\).
+3. These Wedderburn statements may follow from additional \(p^3\)-potency identities applied to sums such as \(a+b\), where \(ba=a^p b\).
+4. If a direct proof is unavailable, finite algebra computations should identify whether low-complexity identities can force \(b=0\) on irreducible cubic components.
+
+## Proposed Methodology
+
+### Approach
+Use Brandenburg's reduction as the main proof skeleton. Treat the known congruence classes as solved by Theorem 8.10, then focus all original work on the two monomial Wedderburn statements for \(p \equiv 1 \pmod 3\). Computational work will model the universal skew relation \(YX=X^pY\) over cubic finite-field components and test identities induced by \(p^3\)-potency.
+
+### Experimental Steps
+1. Reproduce the \(k=3\) congruence split using the local SymPy helper.
+2. Write down precise definitions and theorems needed from Brandenburg.
+3. Prove easy supporting lemmas: reducedness, central idempotents, exponent congruence, and centrality of split-polynomial powers such as \(x^{(p^3-1)/3}\) when \(p \equiv 1 \pmod 3\).
+4. Attempt a direct proof of \(W_{p,3,T^p}\) and \(W_{p,3,T^{p^2}}\).
+5. Implement skew-algebra calculations for \(p=7\) and, if feasible, \(p=13\) to search for low-degree certificates.
+6. Refine the proof attempt based on the computational results.
+
+### Baselines
+The baseline is Brandenburg's existing period criterion, which proves the theorem for the good \(k=3\) cases and fails exactly when \(p \equiv 1 \pmod 3\). The \(p=2\) and \(p=3\) examples in Brandenburg serve as sanity checks for the computational encoding.
+
+### Evaluation Metrics
+- Mathematical: a complete derivation of the missing monomial Wedderburn statements, or a precise reduction showing what remains.
+- Computational: reproducible outputs confirming the congruence split and any candidate identities for \(p=7\).
+- Expository: all claims stated with explicit hypotheses, no hidden use of non-equational structural arguments in claimed equational steps.
+
+### Statistical Analysis Plan
+No statistical inference is appropriate: this is proof construction. Computation is used for exact finite-field algebra and counterexample/certificate search, so outputs are deterministic and validated by repeated runs.
+
+## Expected Outcomes
+A positive outcome is a proof of both missing monomial Wedderburn statements for all \(p \equiv 1 \pmod 3\), completing the \(k=3\) case. A partial outcome is a verified proof for all already-covered congruence classes plus a sharpened obstruction and computational evidence for the remaining class.
+
+## Timeline and Milestones
+1. Resource review and setup: complete.
+2. Planning and notation: short markdown deliverables.
+3. Proof construction: main effort, focused on Wedderburn monomials.
+4. Computational verification: exact finite-field/skew-algebra scripts in `src/`.
+5. Refinement and validation: check for logical gaps and reproducibility.
+6. Final documentation: `REPORT.md`, `README.md`, and result files.
+
+## Potential Challenges
+- The remaining case may require identities too large for a short human proof.
+- Direct skew-algebra computations for \(p=13\) may become large.
+- A classical finite-field argument may accidentally use non-equational reasoning; such steps must be reported as proof-search guidance rather than a completed equational proof.
+
+## Success Criteria
+The session succeeds if it either supplies a complete \(k=3\) proof or cleanly documents the strongest verified reduction and computational evidence for the unresolved \(p \equiv 1 \pmod 3\) cases. In either case, final documentation must distinguish proved statements from conjectural or computationally observed identities.
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          LITERATURE REVIEW
+════════════════════════════════════════════════════════════════════════════════
+
+# Literature Review
+
+## Research Area Overview
+
+Jacobson's commutativity theorem states that a ring in which every element is
+potent is commutative. The present project fixes the exponent and asks for an
+equational proof in the variety of rings satisfying
+
+```text
+x^{p^3} = x,    p x = 0
+```
+
+where `p` is prime. The key source is Brandenburg's arXiv:2310.05301, which
+turns the classical theorem into an explicit equational-proof problem. For
+fixed exponent `n`, Birkhoff completeness gives existence of an equational
+proof once the ordinary theorem is known, but Brandenburg's goal is to
+construct such proofs.
+
+The literature suggests a sharp split for `k=3`. Brandenburg's period
+criterion proves the `p^3` case whenever `gcd(3,p^3-1)=1`, which includes
+`p=2`, `p=3`, and primes `p == 2 mod 3`. The remaining primes `p == 1 mod 3`
+are the natural target for new proof construction.
+
+## Key Definitions
+
+**Ring/rng.** Several papers allow nonunital associative rings. Brandenburg
+uses "rng" for the nonunital case and "ring" for the unital case.
+
+**Potent ring.** A ring is potent if, for every element `x`, there is an
+integer `n(x)>1` such that `x^{n(x)}=x`.
+
+**`n`-ring or `J`-ring.** A ring satisfying the fixed identity `x^n=x` for all
+`x`. Luh calls these `J`-rings. A `p^k`-ring satisfies `x^{p^k}=x` and has
+characteristic `p`.
+
+**Equational proof.** A proof in pure equational logic from the ring axioms and
+the fixed identities, using equality rules, congruence, and substitution. The
+method excludes arguments through ideals, quotients, subrings, quantifiers, and
+ordinary case reasoning unless those steps are represented by equations.
+
+**Reduced ring.** A ring with no nonzero nilpotents. Any fixed-exponent ring
+`x^n=x` is reduced, since a nilpotent element eventually has powers zero.
+
+**Simple number.** In Brandenburg's terminology, `n` is simple if every prime
+power `q` with `q-1 | n-1` is already prime. Simple exponents reduce to the
+`k=1` case.
+
+**Constructive Wedderburn statement `W_{p,k,f}`.** For `f in F_p[T]`,
+`W_{p,k,f}` is the assertion that in a `p^k`-ring of characteristic `p`,
+`ba=f(a)b` implies `ba=ab`. Brandenburg reduces commutativity of `p^k`-rings
+to proving these statements equationally for enough polynomials `f`.
+
+## Key Papers
+
+### Brandenburg: Equational proofs of Jacobson's theorem
+
+- **Author**: Martin Brandenburg
+- **Year**: 2023
+- **Source**: arXiv:2310.05301
+- **Main results**:
+  - Reduces fixed-exponent equational commutativity to prime-power cases in
+    prime characteristic.
+  - Gives explicit equational proofs for `p`-rings and `p^2`-rings.
+  - Reduces general `p^k`-rings to constructive Wedderburn statements
+    `W_{p,k,f}`.
+  - Proves a period criterion: if `gcd(k,p^k-1)=1`, then every `p^k`-ring of
+    characteristic `p` has an equational commutativity proof.
+  - Gives explicit `8`-ring and `27`-ring computations.
+- **Proof techniques**: finite-field polynomial gcds in `F_p[T]`, idempotent
+  centrality, unit/idempotent decomposition, Vandermonde separation,
+  noncommutative coefficient extraction, and finite polynomial-composition
+  monoids.
+- **Relevance**: This is the direct template for the project. It proves many
+  `k=3` cases but leaves the primes `p == 1 mod 3` outside the period
+  criterion.
+
+### Kinyon and MacHale: Elementary Proofs of Ring Commutativity Theorems
+
+- **Authors**: Michael K. Kinyon and Des MacHale
+- **Year**: 2026
+- **Source**: arXiv:2601.12599
+- **Main results**:
+  - Provides elementary proofs for small fixed exponents.
+  - Shows that in a `(2m+1)`-potent ring, `x^m` is central for every `x`.
+  - Uses Prover9 to find or verify several Herstein-type centrality proofs.
+- **Proof techniques**: reduced-ring centrality tests, central idempotents,
+  polynomial identities, and automated equational search.
+- **Relevance**: For odd `p`, the `p^3` identity has odd exponent, so
+  `x^{(p^3-1)/2}` is central. This may be useful in the unresolved
+  `p == 1 mod 3` cases.
+
+### Daas: Equational proofs for a theorem by Jacobson for a significant density of even exponents
+
+- **Author**: M. A. Daas
+- **Main results**: Develops equational proofs for a positive-density family
+  of even exponents.
+- **Proof techniques**: fixed-exponent manipulation and equational reductions.
+- **Relevance**: Useful background for `p=2`, where the target exponent is
+  `8`. Brandenburg's paper contains the strongest directly usable `8`-ring
+  proof.
+
+### Burris and Lawrence: Term Rewrite Rules for Finite Fields
+
+- **Authors**: Stanley N. Burris and John Lawrence
+- **Year**: 1991
+- **Main results**: Studies finite equational axiomatizations and finite
+  rewrite systems for finite fields and for rings satisfying `x^m=x`.
+- **Proof techniques**: term-rewrite systems, finite-field equations, and
+  Knuth-Bendix style completion.
+- **Relevance**: Gives computational-algebra context for producing equational
+  derivations from finite-field identities.
+
+### Wavrik: Commutativity Theorems: Examples in Search of Algorithms
+
+- **Author**: John Wavrik
+- **Year**: 1999
+- **Main results**: Frames commutativity theorems as algorithmic membership
+  problems for noncommutative polynomial identities.
+- **Proof techniques**: noncommutative polynomial reduction with integer
+  coefficients and substitution closure.
+- **Relevance**: Provides an algorithmic path for searching equational proofs
+  when hand derivations become large.
+
+### Luh: On the commutativity of J-rings
+
+- **Author**: Jiang Luh
+- **Year**: 1967
+- **Main results**: Gives structural results for fixed-exponent `J`-rings and
+  `p^k`-rings, including finite-field decomposition statements.
+- **Proof techniques**: central idempotents, reducedness, finite division
+  rings, and direct-sum decompositions.
+- **Relevance**: Classical structural background for the prime-power
+  decomposition that Brandenburg makes equational.
+
+### Dolan: A proof of Jacobson's theorem
+
+- **Author**: J. M. Dolan
+- **Year**: 1976
+- **Main results**: Gives a short proof of Jacobson's theorem avoiding the
+  axiom of choice.
+- **Proof techniques**: finite subrings generated by elements, central
+  idempotents, and a constructive Wedderburn-style commutator argument.
+- **Relevance**: Historical bridge from classical structural proof to
+  constructive/equational proof design.
+
+### Other supporting sources
+
+- Herstein (1961) supplies elementary Wedderburn/Jacobson proof ideas.
+- Buckley and MacHale (2013) analyze variants of `x^3=x` and centrality
+  arguments for low exponents.
+- Anderson and Danchev (2020) place Jacobson's theorem in the broader context
+  of periodic rings, though their result is not an equational fixed-`p^3`
+  proof.
+
+## Known Results
+
+**Jacobson commutativity theorem.** If every element `x` of a ring satisfies
+`x^{n(x)}=x` for some `n(x)>1`, then the ring is commutative.
+
+**Fixed exponent implies equational existence.** For a fixed `n`, the class of
+`n`-rings is an equational variety. Since ordinary Jacobson commutativity holds
+semantically, equational completeness gives a formal proof of `xy=yx`; this is
+nonconstructive and does not identify a practical derivation.
+
+**Central idempotents.** In a reduced ring, idempotents are central. In an
+`n`-ring this can be proved equationally because square-zero elements vanish.
+
+**Exponent congruence.** In an `n`-ring, powers with exponents congruent modulo
+`n-1` agree. In particular, `x^{n-1}` is idempotent.
+
+**Prime-power reduction.** Brandenburg reduces the fixed `n` problem to
+characteristics `p` with `p-1 | n-1`, then to `p^k`-rings. The integer `k` is
+determined by the prime powers `p^d` for which `p^d-1 | n-1`.
+
+**`k=1`.** In a `p`-ring of characteristic `p`, each element can be written as
+a finite `F_p`-linear combination of central idempotents, giving an equational
+proof of commutativity.
+
+**`k=2`.** Brandenburg proves every `p^2`-ring of characteristic `p`
+commutative by equational methods. The proof uses power sums, Vandermonde
+linear algebra, and noncommutative coefficient extraction.
+
+**Constructive Wedderburn reduction.** To prove a `p^k`-ring commutative, it is
+enough to prove the relevant `W_{p,k,f}` statements. Brandenburg further shows
+that the monomial cases `f(T)=T^{p^i}` for `1 <= i < k` are sufficient.
+
+**Period criterion.** If the composition class of `f` has period `pi` and
+`d=gcd(pi,p^k-1)`, then `f^d(a)=a` in a `p^k`-ring. For monomials
+`T^{p^m}`, the period is the order of `m` in `Z/kZ`. Hence if
+`gcd(k,p^k-1)=1`, the monomial Wedderburn statements hold equationally.
+
+**Consequence for `k=3`.** Since
+
+```text
+gcd(3,p^3-1) = 1  for p = 2, p = 3, or p == 2 mod 3,
+gcd(3,p^3-1) = 3  for p == 1 mod 3,
+```
+
+Brandenburg's period theorem covers all `p^3`-rings except primes
+`p == 1 mod 3`. The first uncovered prime is `p=7`, i.e. exponent `343`.
+
+## Proof Techniques in the Literature
+
+**Finite-field polynomial reductions.** Work in `F_p[T]` with polynomials such
+as `T^n-T` and `T^{p^k}-T`, use gcds and extended Euclidean combinations, then
+translate the resulting polynomial identities into equational ring proofs.
+
+**Central idempotent decomposition.** Show powers such as `x^{n-1}` are
+central idempotents, then decompose elements into idempotent and unit-like
+parts. Commuting units then imply full commutativity.
+
+**Vandermonde separation.** In the `p^2` case, evaluate identities over all
+field elements and invert a Vandermonde matrix to isolate noncommutative
+coefficients.
+
+**Constructive Wedderburn sequences.** Starting from `ba=f(a)b`, build
+sequences that combine conjugation-like relations until an equation forces a
+commutator to vanish. Brandenburg's `8`- and `27`-ring computations are model
+cases.
+
+**Composition monoids over `F_p[T]/(T^{p^k}-T)`.** Analyze the period of
+polynomial functions under composition. This is the cleanest route when the
+period is coprime to `p^k-1`.
+
+**Automated equational search.** Burris-Lawrence, Wavrik, and
+Kinyon-MacHale support the use of rewrite systems, noncommutative polynomial
+reduction, and Prover9/Mace4 for discovering finite equational derivations.
+
+## Related Open Problems and Gaps
+
+The practical unresolved target for this project is:
+
+```text
+For every prime p == 1 mod 3, construct an equational proof that
+every characteristic-p ring satisfying x^{p^3}=x is commutative.
+```
+
+By Brandenburg's `weddermonomial` theorem, a focused route is to construct
+equational proofs of
+
+```text
+W_{p,3,T^p}     and     W_{p,3,T^{p^2}}.
+```
+
+The period lemma alone gives only a 3-cycle relation in the uncovered cases,
+because `3 | p^3-1`. A new argument must exploit additional identities of
+`p^3`-rings, central powers, or a more refined constructive Wedderburn
+calculation.
+
+## Recommendations for Proof Strategy
+
+1. Split the `k=3` proof by congruence class of `p mod 3`. Use Brandenburg's
+   period criterion directly for `p=2`, `p=3`, and `p == 2 mod 3`.
+2. For `p == 1 mod 3`, focus on the two monomial Wedderburn statements
+   `W_{p,3,T^p}` and `W_{p,3,T^{p^2}}`.
+3. Start computational exploration at `p=7`. It is the first missing case and
+   should reveal whether a uniform finite sequence exists.
+4. Use the odd-exponent centrality lemma from Kinyon-MacHale as an auxiliary
+   identity: in the target rings with odd `p`, `x^{(p^3-1)/2}` is central.
+5. Use SageMath for finite-field and composition-monoid calculations. Use
+   Prover9 or noncommutative polynomial reduction to search for short
+   equational certificates after candidate identities are found.
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          PAPER REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+Generate a complete mathematics paper with the following structure:
+
+1. TITLE
+   - Clear, specific, informative
+   - Should convey the main result or the mathematical objects studied
+   - Mathematical convention: concise and precise
+
+2. AUTHOR
+   - Use this exact author line: Andrew Ren and NeuriCo
+
+3. ABSTRACT (150-250 words)
+   - State the problem or question investigated
+   - Summarize the main results (theorem statements in words)
+   - Mention proof techniques used
+   - Note any computational verification
+
+4. INTRODUCTION
+   - Mathematical problem and motivation
+   - History and context of the problem
+   - Summary of known results (with citations)
+   - Statement of main contributions (informal preview)
+   - Paper organization
+
+5. PRELIMINARIES
+   - Notation and conventions
+   - Definitions needed for the paper
+   - Prerequisite results (stated with citations, not reproved)
+   - This section ensures the paper is self-contained
+
+6. MAIN RESULTS
+   - Formal theorem statements
+   - Complete proofs
+   - Supporting lemmas and propositions with proofs
+   - Examples illustrating the results
+   - Remarks connecting to other areas
+
+7. DISCUSSION
+   - Implications of the results
+   - Connections to related problems
+   - Open questions and conjectures
+   - Possible generalizations
+
+8. CONCLUSION
+   - Summary of contributions
+   - Future directions
+
+9. REFERENCES
+   - BibTeX format
+   - All cited papers and textbooks
+
+════════════════════════════════════════════════════════════════════════════════
+                          OUTPUT FORMAT
+════════════════════════════════════════════════════════════════════════════════
+
+Create a MODULAR LaTeX project with the following directory structure:
+
+paper_draft/
+├── main.tex              # Main file that imports all sections
+├── references.bib        # BibTeX references
+├── sections/
+│   ├── abstract.tex      # Abstract content
+│   ├── introduction.tex  # Introduction section
+│   ├── preliminaries.tex # Definitions, notation, prerequisites
+│   ├── main_results.tex  # Theorems and proofs
+│   ├── discussion.tex    # Discussion and open questions
+│   └── conclusion.tex    # Conclusion section
+├── figures/              # Directory for any generated figures
+└── appendix/             # Directory for appendix sections (if needed)
+
+INSTRUCTIONS:
+1. First, create the directory structure above (mkdir -p paper_draft/sections paper_draft/figures paper_draft/appendix)
+2. Write main.tex using the AMS document class with proper theorem environments:
+
+   \documentclass{amsart}
+   \usepackage{amsmath,amssymb,amsthm}
+   \usepackage[hidelinks]{hyperref}
+   \usepackage{graphicx}
+   \usepackage{enumitem}
+
+   % Theorem environments
+   \newtheorem{theorem}{Theorem}[section]
+   \newtheorem{lemma}[theorem]{Lemma}
+   \newtheorem{proposition}[theorem]{Proposition}
+   \newtheorem{corollary}[theorem]{Corollary}
+   \newtheorem{conjecture}[theorem]{Conjecture}
+
+   \theoremstyle{definition}
+   \newtheorem{definition}[theorem]{Definition}
+   \newtheorem{example}[theorem]{Example}
+
+   \theoremstyle{remark}
+   \newtheorem{remark}[theorem]{Remark}
+
+   % Import command files (if they exist)
+   \InputIfFileExists{commands/math}{}{}
+   \InputIfFileExists{commands/general}{}{}
+   \InputIfFileExists{commands/macros}{}{}
+
+   % Bibliography style
+   \bibliographystyle{amsplain}
+
+   \author{Andrew Ren and NeuriCo}
+
+   - Use \input{sections/...} to include each section
+   - Use \bibliography{references} for references
+3. Write each section file with COMPLETE content (no placeholders)
+4. Each section file should include its \section{} command
+5. Write references.bib with all citations in BibTeX format
+6. After writing all files, compile the paper:
+   cd paper_draft && pdflatex -interaction=nonstopmode main.tex && bibtex main && pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode main.tex
+
+NOTE ON DOCUMENT CLASS:
+- Use \documentclass{amsart} (NOT \documentclass{article} with \usepackage{style})
+- The amsart class is part of the standard LaTeX distribution — no .sty file needed
+- It provides proper formatting for mathematical papers: theorem numbering,
+  proof environments, AMS math fonts, and standard math journal layout
+
+This modular structure allows humans to easily:
+- Edit individual sections without navigating a large file
+- Track changes per section
+- Reuse sections across different paper versions
+
+════════════════════════════════════════════════════════════════════════════════
+                          QUALITY REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+- Academic mathematical tone throughout
+- Every theorem must have a complete proof
+- All definitions must be precise and unambiguous
+- Proper citations using \cite{} commands
+- NO placeholder text - every section must have real content
+- The paper MUST compile without errors
+- If compilation fails, debug and fix the LaTeX errors
+
+════════════════════════════════════════════════════════════════════════════════
+                       MATHEMATICAL WRITING STYLE
+════════════════════════════════════════════════════════════════════════════════
+
+Follow these conventions for mathematical papers:
+
+1. LANGUAGE STYLE:
+   - Use "we" for collaborative exposition: "We prove", "We show", "We define"
+   - Be precise and direct: state results clearly before proving them
+   - Prefer plain language: "We now prove..." over "We shall henceforth demonstrate..."
+   - Use the present tense for mathematical facts: "Theorem 1 shows..."
+   - Avoid vague language: instead of "clearly" or "obviously", explain why
+
+2. INTRODUCTION STRUCTURE:
+   - Context and motivation (why this problem matters)
+   - History (what's known, with citations)
+   - Statement of results (informal but precise)
+   - Proof techniques (brief overview of methods)
+   - Paper organization (roadmap)
+
+3. THEOREM ENVIRONMENTS:
+   Use proper LaTeX theorem environments:
+   \begin{theorem}\label{thm:main}
+     Let $G$ be a graph with $n$ vertices. Then...
+   \end{theorem}
+
+   \begin{proof}
+     We proceed by induction on $n$. ...
+   \end{proof}
+
+4. DEFINITIONS:
+   \begin{definition}\label{def:widget}
+     A \emph{widget} is a pair $(X, \tau)$ where...
+   \end{definition}
+
+   - Italicize the term being defined using \emph{}
+   - State all conditions explicitly
+   - Give examples immediately after non-trivial definitions
+
+5. PROOF STRUCTURE:
+   - Begin with proof strategy: "The proof proceeds in two steps..."
+   - Number or label key claims within proofs
+   - Use \qedhere for proofs ending in displayed equations
+   - Signal transitions: "It remains to show...", "We now verify..."
+
+6. NOTATION CONVENTIONS:
+   - Define all notation in Preliminaries
+   - Use standard notation: $\mathbb{R}$, $\mathbb{Z}$, $\mathbb{N}$
+   - Use \coloneqq or := for definitions
+   - Be consistent: one symbol = one meaning throughout
+
+7. MATHEMATICAL FORMATTING:
+   - Displayed equations for important formulas: \[ ... \]
+   - Inline math for brief expressions: $...$
+   - Use align environment for multi-line equations
+   - Number only equations that are referenced later
+
+8. REFERENCES AND CITATIONS:
+   - Cite prior results when used: "By \cite{author2024}..."
+   - Distinguish between "Theorem 3 of \cite{...}" and your own results
+   - Include both classic references and recent work
+
+9. EXAMPLES AND COUNTEREXAMPLES:
+   - Illustrate each major result with a concrete example
+   - Show tightness: counterexamples demonstrating necessity of hypotheses
+   - Use \begin{example} ... \end{example} environment
+
+10. FIGURES (if applicable):
+    - Diagrams for geometric arguments
+    - Graphs or plots from computational verification
+    - Commutative diagrams for algebraic results
+    - Use TikZ or include pre-generated figures
+
+════════════════════════════════════════════════════════════════════════════════
+                          WORKFLOW: REVIEW AND REFLECT
+════════════════════════════════════════════════════════════════════════════════
+
+Before calling finish, you MUST complete these review steps:
+
+1. REVIEW RESOURCES (at the start):
+   - Read .codex/skills/paper-writer/SKILL.md for detailed guidance
+   - Study templates/paper_writing/lab_style_guide.md for style conventions
+   - Skim paper_draft/example_paper.tex for amsart LaTeX conventions only
+   - Browse paper_examples/ for language patterns (if available)
+
+2. SELF-REFLECTION (before finishing):
+   After writing all sections, review your work against these criteria:
+
+   MATHEMATICAL CONTENT CHECK:
+   - [ ] Every theorem has a complete, rigorous proof
+   - [ ] All definitions are precise with explicit quantifiers
+   - [ ] Examples illustrate major results
+   - [ ] Counterexamples show necessity of hypotheses where applicable
+   - [ ] Notation is consistent throughout
+
+   FORMATTING CHECK:
+   - [ ] Theorem environments (\begin{theorem}...\end{theorem}) used properly
+   - [ ] Proof environments (\begin{proof}...\end{proof}) used for all proofs
+   - [ ] Is hyperref package included for clickable references?
+   - [ ] Labels and cross-references work correctly
+   - [ ] Bibliography entries are complete
+
+   STRUCTURE CHECK:
+   - [ ] Introduction previews main results clearly
+   - [ ] Preliminaries section makes the paper self-contained
+   - [ ] Results are ordered logically (lemmas before theorems that use them)
+   - [ ] Does the paper compile without errors?
+
+3. FIX ISSUES:
+   - Address any issues found in the self-reflection
+   - Re-compile and verify the PDF looks correct
+
+Only after completing this review should you consider the paper finished.

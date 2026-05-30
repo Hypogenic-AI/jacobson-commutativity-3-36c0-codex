@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "stages": {
+    "resource_finder": {
+      "success": true,
+      "completion_marker": "/workspaces/jacobson-commutativity-3-36c0-codex/.resource_finder_complete",
+      "outputs": {
+        "literature_review": "/workspaces/jacobson-commutativity-3-36c0-codex/literature_review.md",
+        "resources_catalog": "/workspaces/jacobson-commutativity-3-36c0-codex/resources.md",
+        "papers_dir": "/workspaces/jacobson-commutativity-3-36c0-codex/papers",
+        "code_dir": "/workspaces/jacobson-commutativity-3-36c0-codex/code"
+      },
+      "log_file": "/workspaces/jacobson-commutativity-3-36c0-codex/logs/resource_finder_codex.log",
+      "transcript_file": "/workspaces/jacobson-commutativity-3-36c0-codex/logs/resource_finder_codex_transcript.jsonl",
+      "elapsed_time": 1108.9180901050568
+    },
+    "experiment_runner": {
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 879.2858679294586,
+      "log_file": "/workspaces/jacobson-commutativity-3-36c0-codex/logs/execution_codex.log",
+      "transcript_file": "/workspaces/jacobson-commutativity-3-36c0-codex/logs/execution_codex_transcript.jsonl"
+    }
+  },
+  "work_dir": "/workspaces/jacobson-commutativity-3-36c0-codex"
+}

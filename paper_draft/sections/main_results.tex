@@ -1,0 +1,202 @@
+\section{Main Results}\label{sec:main-results}
+
+We begin with a centrality lemma for elements annihilated by split squarefree polynomials.
+
+\begin{lemma}[Split-polynomial centrality]\label{lem:split-centrality}
+  Let \(A\) be a reduced \(\mathbb F_p\)-algebra.  Let
+  \[
+    m(T)=\prod_{\lambda\in \Lambda}(T-\lambda)
+  \]
+  with \(\Lambda\subseteq \mathbb F_p\) finite and with distinct elements.  If \(m(c)=0\) for some \(c\in A\), then \(c\in Z(A)\).  In particular, if \(p\equiv 1 \pmod 3\) and \(c^3=1\), then \(c\in Z(A)\).
+\end{lemma}
+
+\begin{proof}
+  For each \(\lambda\in\Lambda\), let \(e_\lambda(T)\in \mathbb F_p[T]\) be the Lagrange interpolation polynomial satisfying
+  \[
+    e_\lambda(\mu)=
+    \begin{cases}
+      1, & \mu=\lambda,\\
+      0, & \mu\neq \lambda
+    \end{cases}
+    \qquad (\mu\in\Lambda).
+  \]
+  Modulo \(m(T)\), the polynomials \(e_\lambda\) are pairwise orthogonal idempotents and
+  \[
+    1=\sum_{\lambda\in\Lambda}e_\lambda(T),
+    \qquad
+    T=\sum_{\lambda\in\Lambda}\lambda e_\lambda(T).
+  \]
+  Evaluating at \(c\), we obtain pairwise orthogonal idempotents \(e_\lambda(c)\).  By Lemma~\ref{lem:reduced-idempotent}, each \(e_\lambda(c)\) is central.  Therefore
+  \[
+    c=\sum_{\lambda\in\Lambda}\lambda e_\lambda(c)
+  \]
+  is central.
+
+  If \(p\equiv 1 \pmod 3\), then \(p\neq 3\) and \(\mathbb F_p^\times\) contains the three cube roots of unity.  Hence \(T^3-1\) splits into distinct linear factors over \(\mathbb F_p\).  Applying the first part to \(m(T)=T^3-1\) proves the final assertion.
+\end{proof}
+
+The next lemma is the finite algebra input used to normalize a Frobenius-skew unit.
+
+\begin{lemma}[Finite cyclic norm section]\label{lem:norm-section}
+  Let \(p\equiv 1 \pmod 3\), let \(q=p^3\), let \(g\in \mathbb F_p[T]\) be irreducible of degree \(3\), and let \(i\in\{1,2\}\).  Put
+  \[
+    B=\mathbb F_p[S,T]/(S^{q-1}-1,\ g(T)).
+  \]
+  Let \(\sigma_i\) be the \(\mathbb F_p\)-algebra automorphism of \(B\) defined by
+  \[
+    \sigma_i(S)=S,
+    \qquad
+    \sigma_i(T)=T^{p^i}.
+  \]
+  Then there is a unit \(U\in B\) such that
+  \[
+    U\,\sigma_i(U)\,\sigma_i^2(U)=S.
+  \]
+\end{lemma}
+
+\begin{proof}
+  Let
+  \[
+    C=\mathbb F_p[S]/(S^{q-1}-1).
+  \]
+  The polynomial \(S^{q-1}-1\) is squarefree in characteristic \(p\), and its roots are exactly \(\mathbb F_q^\times\).  Therefore every simple factor of \(C\) is a finite field whose degree over \(\mathbb F_p\) divides \(3\).  Since \(3\) is prime, the degrees are \(1\) or \(3\).
+
+  We prove the asserted norm-surjectivity on each simple factor of \(C\).  If \(S\) maps to a degree-one factor, then \(S=s_0\in \mathbb F_p^\times\), and
+  \[
+    B\otimes_C \mathbb F_p \cong \mathbb F_p[T]/(g(T))\cong \mathbb F_q.
+  \]
+  Under this identification, \(\sigma_i\) is a generator of \(\operatorname{Gal}(\mathbb F_q/\mathbb F_p)\).  The norm
+  \[
+    x\longmapsto x\,\sigma_i(x)\,\sigma_i^2(x)
+  \]
+  maps \(\mathbb F_q^\times\) onto \(\mathbb F_p^\times\), so \(s_0\) has a preimage.
+
+  If \(S\) maps to a degree-three factor, then that factor is a copy \(K\cong \mathbb F_q\).  The polynomial \(g\) splits over \(K\), so
+  \[
+    B\otimes_C K\cong K^3.
+  \]
+  The automorphism \(\sigma_i\) fixes \(K\) and cyclically permutes the three factors, because \(T\mapsto T^{p^i}\) is a 3-cycle on the roots of the irreducible cubic \(g\).  Hence the cyclic norm sends
+  \[
+    (x_0,x_1,x_2)\longmapsto (x_0x_1x_2,\ x_0x_1x_2,\ x_0x_1x_2).
+  \]
+  This map is surjective onto the diagonal copy of \(K^\times\); in particular it has a preimage of the element represented by \(S\).
+
+  The Chinese remainder theorem combines these choices over all simple factors of \(C\).  The resulting element \(U\in B\) has nonzero image in every simple component, hence is a unit, and satisfies
+  \[
+    U\,\sigma_i(U)\,\sigma_i^2(U)=S
+  \]
+  in \(B\).
+\end{proof}
+
+\begin{proposition}\label{prop:bad-class-wedderburn}
+  Let \(p\equiv 1 \pmod 3\).  Then the constructive Wedderburn statements \(W_{p,3,T^p}\) and \(W_{p,3,T^{p^2}}\) admit finite equational certificates.
+\end{proposition}
+
+\begin{proof}
+  It is enough to treat \(W_{p,3,T^{p^i}}\) for a fixed \(i\in\{1,2\}\).  Let \(A\) be a \(p^3\)-ring, put \(q=p^3\), and suppose
+  \[
+    ba=a^{p^i}b
+  \]
+  for \(a,b\in A\).  Write \(\sigma(a)=a^{p^i}\).
+
+  First reduce to the central support on which \(b\) is a unit.  Let \(e=b^{q-1}\).  Then \(e\) is a central idempotent, \(eb=b\), and \((1-e)b=0\).  On the component \(eA\), the element \(b\) is a unit with inverse \(b^{q-2}\).  On the complementary component, \(b=0\), so \(ba=ab=0\).  Thus we may replace \(A\) by \(eA\) and assume that \(b\) is a unit.
+
+  Decompose \(a\) using the central idempotents attached to the irreducible factors of \(T^q-T\).  On a linear component, \(a\in\mathbb F_p\) in the polynomial sense, so \(a^{p^i}=a\), and the desired commutativity follows immediately from \(ba=a^{p^i}b\).
+
+  It remains to consider a component on which
+  \[
+    g(a)=0
+  \]
+  for an irreducible cubic \(g\in\mathbb F_p[T]\).  In this component, \(a^{p^i}-a\) is a unit.  Indeed, \(g\) is coprime to \(T^{p^i}-T\): a common root would lie in \(\mathbb F_{p^i}\), while a root of \(g\) has degree \(3\) over \(\mathbb F_p\).  A Bezout identity therefore gives a polynomial inverse for \(a^{p^i}-a\).
+
+  We now show that such a cubic component must be zero.  Iterating the relation \(ba=\sigma(a)b\) gives
+  \[
+    b^3a=\sigma^3(a)b^3=a b^3,
+  \]
+  since \(\sigma^3(a)=a^{p^{3i}}=a\) in a \(p^3\)-ring.  Let \(s=b^3\).  Then \(s\) commutes with \(a\), and it also commutes with \(b\).  Since \(s\) is a unit, \(s^{q-1}=1\).
+
+  Apply Lemma~\ref{lem:norm-section} to the cubic \(g\).  Under the homomorphism
+  \[
+    \mathbb F_p[S,T]/(S^{q-1}-1,\ g(T))\longrightarrow A,
+    \qquad
+    S\longmapsto s,\quad T\longmapsto a,
+  \]
+  the norm-section element \(U\) maps to an element \(u\) in the commutative subring generated by \(s\) and \(a\), and
+  \[
+    u\,\sigma(u)\,\sigma^2(u)=s.
+  \]
+  Here \(\sigma\) acts on this subring by fixing \(s\) and sending \(a\) to \(a^{p^i}\).  The displayed identity makes \(u\) a unit.  Since \(bu=\sigma(u)b\), the element
+  \[
+    c=u^{-1}b
+  \]
+  satisfies
+  \[
+    c^3
+    =u^{-1}\sigma(u)^{-1}\sigma^2(u)^{-1}b^3
+    =\bigl(u\,\sigma(u)\,\sigma^2(u)\bigr)^{-1}s
+    =1.
+  \]
+  By Lemma~\ref{lem:split-centrality}, \(c\) is central, because \(p\equiv 1 \pmod 3\).  But
+  \[
+    ca=u^{-1}ba=u^{-1}a^{p^i}b=a^{p^i}c.
+  \]
+  Since \(c\) is a central unit, this gives \(a=a^{p^i}\).  This contradicts the fact that \(a^{p^i}-a\) is a unit unless the identity element of the present cubic component is zero.  Hence the \(b\)-unit support has no nonzero cubic component.
+
+  We have shown that, on the support of \(b\), all nonzero components are linear, and on those components \(a^{p^i}=a\).  Therefore \(ba=ab\) in \(A\).
+
+  Finally, for fixed \(p\), every ingredient used above is finite and polynomial: the support \(b^{q-1}\), the idempotents for the factorization of \(T^q-T\), the Bezout inverse of \(T^{p^i}-T\) modulo each cubic \(g\), and the norm-section identity from Lemma~\ref{lem:norm-section}.  Enumerating the finitely many cubic \(g\)'s gives the desired finite equational certificate.
+\end{proof}
+
+\begin{theorem}\label{thm:main}
+  Let \(p\) be prime.  Every \(p^3\)-ring is commutative.  Moreover, for each fixed \(p\), the identity \(xy=yx\) has a finite equational certificate from the identities \(px=0\) and \(x^{p^3}=x\).
+\end{theorem}
+
+\begin{proof}
+  If \(p=2\), \(p=3\), or \(p\equiv 2 \pmod 3\), then \(\gcd(3,p^3-1)=1\), so Brandenburg's period criterion proves the needed monomial constructive Wedderburn statements equationally \cite{brandenburg2023}.  If \(p\equiv 1 \pmod 3\), Proposition~\ref{prop:bad-class-wedderburn} gives finite equational certificates for \(W_{p,3,T^p}\) and \(W_{p,3,T^{p^2}}\).  Brandenburg's monomial sufficiency theorem then gives commutativity of all \(p^3\)-rings, again by finite equational certificates for each fixed \(p\).
+\end{proof}
+
+\begin{example}[A period-criterion prime]\label{ex:p5}
+  For \(p=5\), one has \(p^3-1=124\) and \(\gcd(3,124)=1\).  Thus the \(5^3\)-case is already handled by Brandenburg's period criterion.  No cyclic norm section is needed in this congruence class.
+\end{example}
+
+\begin{example}[The first norm-section prime]\label{ex:p7}
+  For \(p=7\), one has \(q=343\) and \(p\equiv 1 \pmod 3\).  The polynomial \(T^{343}-T\) has \(7\) linear factors and \((343-7)/3=112\) irreducible cubic factors over \(\mathbb F_7\).  Proposition~\ref{prop:bad-class-wedderburn} supplies a norm-section certificate for each of those cubic factors and for both maps \(T\mapsto T^7\) and \(T\mapsto T^{49}\).
+\end{example}
+
+\begin{remark}\label{rem:split-hypothesis}
+  Lemma~\ref{lem:split-centrality} uses the splitting of the annihilating polynomial over the ground field.  The proof does not say that an element on an irreducible cubic component is central.  The norm argument is precisely the step that converts the Frobenius-skew unit into an element satisfying the split equation \(c^3=1\).
+\end{remark}
+
+\subsection{Verification}\label{subsec:computation}
+
+Checks are exact.  Table~\ref{tab:checks} summarizes the outputs, which are stored in \path{results/k3_checks.json}.
+
+\begin{table}[t]
+\centering
+\caption{Exact symbolic checks used as reproducibility evidence.  The skew-model row supports the proof search but is not used as a premise in Theorem~\ref{thm:main}.}
+\label{tab:checks}
+\small
+\begin{tabular}{@{}L{0.22\linewidth}L{0.38\linewidth}L{0.27\linewidth}@{}}
+\toprule
+Check & Output & Role \\
+\midrule
+Period samples & \(p=2,3,5,11,17\) have \(\gcd(3,p^3-1)=1\) & Confirms covered classes \\
+Bad-class samples & \(p=7,13,19\) have \(\gcd(3,p^3-1)=3\) & Confirms target classes \\
+Norm components, \(p=7\) & \(112\) cubic \(S\)-components and \(6\) linear ones & Matches Lemma~\ref{lem:norm-section} \\
+Norm components, \(p=13\) & \(728\) cubic \(S\)-components and \(12\) linear ones & Matches Lemma~\ref{lem:norm-section} \\
+Skew model, \(p=7\) & gcd degree drops from \(13\) to \(0\) after adding \(t=3\) & Checks first open model \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The validation commands compile the checking scripts and compare two independent JSON runs:
+\begin{quote}
+\small
+\begin{verbatim}
+python -m py_compile src/k3_wedderburn_checks.py \
+  code/finite_field_reductions.py
+diff <(python src/k3_wedderburn_checks.py --json) \
+  <(python src/k3_wedderburn_checks.py --json)
+\end{verbatim}
+\end{quote}
+The computations are deterministic; they verify the finite algebra reductions used to generate certificates, not a statistical claim.

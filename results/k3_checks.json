@@ -1,0 +1,94 @@
+{
+  "norm_section_summaries": [
+    {
+      "cubic_s_components": 112,
+      "irreducible_cubic_count": 112,
+      "linear_s_components": 6,
+      "norm_surjective_on_degree_1_components": 1,
+      "norm_surjective_on_degree_3_components": 1,
+      "p": 7,
+      "q": 343
+    },
+    {
+      "cubic_s_components": 728,
+      "irreducible_cubic_count": 728,
+      "linear_s_components": 12,
+      "norm_surjective_on_degree_1_components": 1,
+      "norm_surjective_on_degree_3_components": 1,
+      "p": 13,
+      "q": 2197
+    }
+  ],
+  "p7_skew_model": {
+    "alpha_check": {
+      "alpha_p": [
+        4,
+        2,
+        3
+      ],
+      "alpha_p3_minus_alpha": [
+        0,
+        0,
+        0
+      ]
+    },
+    "field_polynomial": "T^3 + T^2 + 1 over F_7",
+    "gcd_degrees_after_t_values": [
+      {
+        "common_gcd_degree": 13,
+        "t": 1
+      },
+      {
+        "common_gcd_degree": 13,
+        "t": 2
+      },
+      {
+        "common_gcd_degree": 0,
+        "t": 3
+      }
+    ],
+    "s_parameter_relation": "S^114 = 1"
+  },
+  "period_split": [
+    {
+      "gcd_3_p3_minus_1": 1,
+      "p": 2,
+      "period_criterion": true
+    },
+    {
+      "gcd_3_p3_minus_1": 1,
+      "p": 3,
+      "period_criterion": true
+    },
+    {
+      "gcd_3_p3_minus_1": 1,
+      "p": 5,
+      "period_criterion": true
+    },
+    {
+      "gcd_3_p3_minus_1": 3,
+      "p": 7,
+      "period_criterion": false
+    },
+    {
+      "gcd_3_p3_minus_1": 1,
+      "p": 11,
+      "period_criterion": true
+    },
+    {
+      "gcd_3_p3_minus_1": 3,
+      "p": 13,
+      "period_criterion": false
+    },
+    {
+      "gcd_3_p3_minus_1": 1,
+      "p": 17,
+      "period_criterion": true
+    },
+    {
+      "gcd_3_p3_minus_1": 3,
+      "p": 19,
+      "period_criterion": false
+    }
+  ]
+}

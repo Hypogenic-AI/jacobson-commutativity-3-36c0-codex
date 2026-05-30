@@ -1,0 +1,27 @@
+\section{Discussion}\label{sec:discussion}
+
+The \(k=3\) case separates cleanly into two mechanisms.  When \(\gcd(3,p^3-1)=1\), Brandenburg's period criterion collapses the relevant Frobenius orbit.  When \(p\equiv 1 \pmod 3\), the orbit has genuine length \(3\), so a different argument is needed.  The cyclic norm section supplies exactly that argument: it changes a Frobenius-skew unit \(b\) into a unit \(c=u^{-1}b\) whose cube is \(1\).  Because \(T^3-1\) splits over \(\mathbb F_p\) in this congruence class, reducedness forces \(c\) to be central.
+
+The proof also clarifies what remains computational rather than conceptual.  For a fixed prime \(p\equiv 1 \pmod 3\), Lemma~\ref{lem:norm-section} guarantees a polynomial representative
+\[
+  U_{g,i}(S,T)\in \mathbb F_p[S,T]
+\]
+for each irreducible cubic \(g\) and each \(i\in\{1,2\}\).  The identity
+\[
+  U_{g,i}(S,T)U_{g,i}(S,T^{p^i})U_{g,i}(S,T^{p^{2i}})=S
+\]
+is then checked in the finite quotient
+\[
+  \mathbb F_p[S,T]/(S^{p^3-1}-1,\ g(T)).
+\]
+Printing these polynomials for every \(g\) is not necessary for the human proof, but it is the next step toward machine-checkable certificate files in the style of Brandenburg's explicit computations.
+
+This distinction matters.  The present paper proves existence of finite certificates and identifies the finite quotient rings in which they live.  It does not claim that the expanded certificates are short.  Already for \(p=7\), there are \(112\) irreducible cubic factors of \(T^{343}-T\), so a literal certificate listing can be large.  Symmetries among cubic factors, reciprocal polynomials, and linear substitutions should reduce the output, but we have not optimized it here.
+
+Several questions remain open.
+\begin{enumerate}[leftmargin=*]
+  \item Build a certificate generator that computes \(U_{g,i}(S,T)\) for every relevant \(g\) and emits a machine-checkable equational derivation.
+  \item Minimize the resulting certificates using the action of Frobenius, reciprocal transformations, and linear changes of variable.
+  \item Determine whether the cyclic norm method extends to higher layers \(p^k\), where the bad congruence classes contain longer Frobenius cycles.
+  \item Compare the norm certificates with automated equational searches of the kind developed for finite-field rewrite systems and noncommutative polynomial identities \cite{burrisLawrence1991,wavrik1999}.
+\end{enumerate}

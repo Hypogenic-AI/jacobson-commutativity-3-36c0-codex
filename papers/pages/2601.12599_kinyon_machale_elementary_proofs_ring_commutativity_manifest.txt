@@ -1,0 +1,10 @@
+PDF: papers/2601.12599_kinyon_machale_elementary_proofs_ring_commutativity.pdf
+Total pages: 10
+Pages per chunk: 2
+
+Chunks:
+  2601.12599_kinyon_machale_elementary_proofs_ring_commutativity_chunk_001.pdf: pages 1-2
+  2601.12599_kinyon_machale_elementary_proofs_ring_commutativity_chunk_002.pdf: pages 3-4
+  2601.12599_kinyon_machale_elementary_proofs_ring_commutativity_chunk_003.pdf: pages 5-6
+  2601.12599_kinyon_machale_elementary_proofs_ring_commutativity_chunk_004.pdf: pages 7-8
+  2601.12599_kinyon_machale_elementary_proofs_ring_commutativity_chunk_005.pdf: pages 9-10

@@ -1,0 +1,31 @@
+\section{Introduction}\label{sec:introduction}
+
+Jacobson's commutativity theorem says that a ring is commutative if every element \(x\) satisfies \(x^n=x\) for some integer \(n>1\) depending on \(x\) \cite{jacobson1945}.  The theorem is classical, but the fixed-exponent form raises a more syntactic question.  If \(n\) is fixed and every element satisfies \(x^n=x\), can one derive \(xy=yx\) by equations alone, starting from the ring axioms and the identity \(x^n=x\)?
+
+This question is not only a reformulation of a known theorem.  For fixed \(n\), Birkhoff's completeness theorem guarantees that such a derivation exists once the semantic theorem is known, but it gives no useful derivation \cite{birkhoff1935}.  Explicit proofs are delicate: they must replace quotient arguments, ideals, and ordinary case distinctions by finite polynomial identities.  Work of Herstein, Luh, and Dolan gives elementary structural proofs of Jacobson-type commutativity theorems \cite{herstein1961,luh1967,dolan1976}.  Recent fixed-exponent proofs and Prover9-assisted centrality arguments appear in Kinyon--MacHale \cite{kinyonMacHale2026}, while computational approaches to fixed identities appear in Burris--Lawrence and Wavrik \cite{burrisLawrence1991,wavrik1999}.
+
+Brandenburg recently gave a systematic equational program for this problem \cite{brandenburg2023}.  The fixed-exponent problem is reduced to prime-power identities in prime characteristic.  In characteristic \(p\), one studies \(p^k\)-rings, meaning rings satisfying \(px=0\) and \(x^{p^k}=x\).  Brandenburg proves the cases \(k=1\) and \(k=2\), reduces the general case to constructive Wedderburn statements, and proves a period criterion that handles many higher prime powers.  For \(k=3\), that criterion proves all primes with
+\[
+  \gcd(3,p^3-1)=1.
+\]
+Equivalently, it covers \(p=2\), \(p=3\), and primes \(p\equiv 2 \pmod 3\).  The first family not covered by this criterion is \(p\equiv 1 \pmod 3\).
+
+We prove that this remaining family is also controlled by finite equational certificates.  By Brandenburg's monomial reduction, it is enough to prove the two statements
+\[
+  W_{p,3,T^p}
+  \qquad\text{and}\qquad
+  W_{p,3,T^{p^2}},
+\]
+where \(W_{p,3,f}\) asserts that \(ba=f(a)b\) implies \(ba=ab\) in every \(p^3\)-ring.  The obstruction in the missing congruence class is a genuine Frobenius 3-cycle on irreducible cubic components.  The main observation of this paper is that the cycle can be absorbed by a cyclic norm section.
+
+The proof has three ingredients.  First, if a reduced ring element satisfies a separable polynomial split over \(\mathbb F_p\), then it is central.  In particular, when \(p\equiv 1 \pmod 3\), every element satisfying \(c^3=1\) is central.  Second, on each irreducible cubic component, a finite quotient algebra supplies a polynomial \(U(S,T)\) whose cyclic norm is \(S\).  Third, if \(b a=a^{p^i}b\) and \(b\) is a unit on its central support, then \(s=b^3\) is fixed by the Frobenius cycle.  Choosing \(u=U(s,a)\), the element \(c=u^{-1}b\) satisfies \(c^3=1\), hence is central; this forces \(a=a^{p^i}\), contradicting the nontrivial cubic component unless the component vanishes.
+
+Our contributions are:
+\begin{itemize}[leftmargin=*]
+  \item We isolate a split-polynomial centrality lemma that turns \(c^3=1\) into centrality exactly in the congruence class \(p\equiv 1 \pmod 3\).
+  \item We prove a finite cyclic norm section for every irreducible cubic factor of \(T^{p^3}-T\) and for both Frobenius generators \(T\mapsto T^p\) and \(T\mapsto T^{p^2}\).
+  \item We combine these ingredients with Brandenburg's reductions to obtain finite equational certificates for all characteristic-\(p\) rings satisfying \(x^{p^3}=x\).
+  \item We record exact symbolic checks that reproduce the congruence split and verify the finite component structure used by the norm argument.
+\end{itemize}
+
+\Secref{sec:preliminaries} fixes notation and recalls the reductions from Brandenburg that we use.  \Secref{sec:main-results} proves the centrality, norm-section, and monomial Wedderburn results, and then combines them into the \(k=3\) theorem.  \Secref{sec:discussion} discusses the certificate interpretation and open computational questions.  \Secref{sec:conclusion} summarizes the result.

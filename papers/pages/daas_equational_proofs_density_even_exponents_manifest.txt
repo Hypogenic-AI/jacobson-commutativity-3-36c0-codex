@@ -1,0 +1,7 @@
+PDF: papers/daas_equational_proofs_density_even_exponents.pdf
+Total pages: 4
+Pages per chunk: 2
+
+Chunks:
+  daas_equational_proofs_density_even_exponents_chunk_001.pdf: pages 1-2
+  daas_equational_proofs_density_even_exponents_chunk_002.pdf: pages 3-4

@@ -1,0 +1,77 @@
+\section{Preliminaries}\label{sec:preliminaries}
+
+All rings in this paper are associative and unital.  If \(p\) is prime, \(\mathbb F_p\) denotes the field with \(p\) elements.  We write \(Z(A)\) for the center of a ring \(A\).  For the main problem we put
+\[
+  q=p^3.
+\]
+
+\begin{definition}\label{def:p3-ring}
+  A \emph{\(p^3\)-ring} is a ring \(A\) such that
+  \[
+    px=0
+    \qquad\text{and}\qquad
+    x^{p^3}=x
+  \]
+  for every \(x\in A\).
+\end{definition}
+
+\begin{lemma}\label{lem:reduced-idempotent}
+  Every \(p^3\)-ring is reduced, and every idempotent in a reduced ring is central.
+\end{lemma}
+
+\begin{proof}
+  If \(A\) is a \(p^3\)-ring and \(x^2=0\), then \(x^{p^3}=0\), so \(x=0\).  Thus \(A\) has no nonzero square-zero elements.  If \(y\) is nilpotent, then \(y^{2^r}=0\) for some \(r\), and descending from \(y^{2^r}=0\) shows \(y=0\).  Hence \(A\) is reduced.
+
+  Let \(A\) be reduced and let \(e^2=e\).  For any \(x\in A\),
+  \[
+    (ex-exe)^2=0
+    \qquad\text{and}\qquad
+    (xe-exe)^2=0.
+  \]
+  Reducedness gives \(ex=exe=xe\).  Hence \(e\in Z(A)\).
+\end{proof}
+
+If \(x^q=x\), then positive powers of \(x\) depend only on the exponent modulo \(q-1\): for \(r\geq 1\),
+\[
+  x^{r+q-1}=x^r.
+\]
+In particular, if \(x\) is a unit in a \(p^3\)-ring, then \(x^{q-1}=1\).
+
+\begin{definition}\label{def:wedderburn}
+  Let \(f\in \mathbb F_p[T]\).  The constructive Wedderburn statement \(W_{p,3,f}\) is the assertion that, in every \(p^3\)-ring \(A\), for all \(a,b\in A\),
+  \[
+    ba=f(a)b
+    \quad\Longrightarrow\quad
+    ba=ab.
+  \]
+\end{definition}
+
+We use two reductions from Brandenburg \cite{brandenburg2023}.  First, for \(k=3\), commutativity of all \(p^3\)-rings follows from equational proofs of the two monomial statements
+\[
+  W_{p,3,T^p}
+  \qquad\text{and}\qquad
+  W_{p,3,T^{p^2}}.
+\]
+Second, Brandenburg's period criterion proves these monomial statements whenever \(\gcd(3,p^3-1)=1\).  Since
+\[
+  \gcd(3,p^3-1)=
+  \begin{cases}
+    1, & p=2,\ p=3,\ \text{or }p\equiv 2 \pmod 3,\\
+    3, & p\equiv 1 \pmod 3,
+  \end{cases}
+\]
+the only case not settled by the period criterion is \(p\equiv 1 \pmod 3\).
+
+We also use the standard factorization
+\[
+  T^q-T=\prod_{\alpha\in \mathbb F_q}(T-\alpha)
+\]
+over \(\mathbb F_q\).  Over \(\mathbb F_p\), this is the product of all monic irreducible polynomials whose degrees divide \(3\).  Thus the irreducible factors are linear factors and irreducible cubic factors.  For each irreducible factor \(g\) of \(T^q-T\), Bezout identities for the pair \(g\) and \((T^q-T)/g\) give a polynomial idempotent \(e_g(T)\) modulo \(T^q-T\).  If \(a\in A\), then \(e_g(a)\) is a central idempotent by Lemma~\ref{lem:reduced-idempotent}, and the idempotents \(e_g(a)\) decompose \(A\) into the usual linear and cubic Frobenius components.
+
+\begin{definition}\label{def:certificate}
+  A \emph{finite equational certificate} for a statement about \(p^3\)-rings is a finite list of polynomial identities over \(\mathbb F_p\), together with the indicated substitutions into the ring identities, whose validity implies the desired equation by equational logic.  In this paper the certificates are finite because, for fixed \(p\), there are only finitely many irreducible cubic factors of \(T^{p^3}-T\), and each norm identity is verified in a finite-dimensional quotient of \(\mathbb F_p[S,T]\).
+\end{definition}
+
+\begin{remark}\label{rem:semantic-language}
+  The proofs below are written in ordinary ring-theoretic language for readability.  Each use of a component, a support, or a polynomial inverse is represented by an explicit idempotent or Bezout identity.  Thus the semantic notation records a finite equational derivation rather than adding an extra model-theoretic assumption.
+\end{remark}

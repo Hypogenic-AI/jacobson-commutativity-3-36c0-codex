@@ -1,0 +1,56 @@
+\documentclass{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% The pre-copied general command template customizes algorithmicx when present.
+\providecommand{\algorithmicindent}{}
+
+% Import command files (if they exist)
+\InputIfFileExists{commands/math}{}{}
+\InputIfFileExists{commands/general}{}{}
+\InputIfFileExists{commands/macros}{}{}
+
+\title[Cyclic norm certificates for \(p^3\)-rings]{Cyclic Norm Certificates for Equational Jacobson Proofs in the \(p^3\)-Case}
+\author{Andrew Ren and NeuriCo}
+\subjclass[2020]{Primary 16R50; Secondary 03C05, 16U80, 13M05}
+\keywords{Jacobson theorem, commutativity theorem, equational proof, finite fields, Wedderburn theorem}
+
+\begin{document}
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/preliminaries}
+\input{sections/main_results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}
