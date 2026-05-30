@@ -1,0 +1,29 @@
+idea:
+  title: Equational Proofs of Jacobson's Commutativity Theorem when k = 3
+  domain: mathematics
+  hypothesis: 'It is possible to construct an equational proof of Jacobson''s commutativity
+    theorem for rings in which every element x satisfies x^n = x, specifically for
+    the case where n is a prime power p^3 and the ring has characteristic p.
+
+    '
+  background:
+    description: "A classical theorem by Jacobson says that a ring in which every\
+      \ element x satisfies the equation x^n = x for some n > 1 is commutative. According\
+      \ to Birkhoff\u2019s Completeness Theorem, if n is fixed, there must be an equational\
+      \ proof of this theorem. The following paper makes a reduction to the case that\
+      \ n is a prime power p^k and the ring has characteristic p and prove the special\
+      \ cases k = 1 and k = 2. Try coming up with a proof for the case k = 3.\n"
+    papers:
+    - url: https://arxiv.org/pdf/2310.05301
+      description: '"A classical theorem by Jacobson says that a ring in which every
+        element x satisfies the equation x^n = x for some n > 1 is commutative." Andrew
+        Ren (2023). arXiv:2310.05301.'
+  metadata:
+    author: Andrew Ren
+    source: IdeaHub
+    source_url: https://hypogenic.ai/ideahub/idea/hoQa3nuaM2gAaG5w2Zw5
+    idea_id: equational_proofs_of_jacobson__20260530_055558_ae4ce5d6
+    created_at: '2026-05-30T05:55:58.145422'
+    status: submitted
+    github_repo_name: jacobson-commutativity-3-36c0-codex
+    github_repo_url: https://github.com/Hypogenic-AI/jacobson-commutativity-3-36c0-codex
